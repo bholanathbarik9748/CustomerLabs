@@ -1,23 +1,20 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import SegmentPopup from './Components/SegmentPopup';
 import './App.css';
 
 function App() {
+  const [showPopup, setShowPopup] = useState(false);
+
+  const handleSaveClick = () => {
+    setShowPopup(true);
+  };
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <button className="save-button" onClick={handleSaveClick}>
+        Save Segment
+      </button>
+      {showPopup && <SegmentPopup onClose={() => setShowPopup(false)} />}
     </div>
   );
 }
